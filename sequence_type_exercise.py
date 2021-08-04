@@ -11,7 +11,7 @@ def add_layer(row):
     # Each layer should be a tuple.
     print(type(row))
     zipped_row = zip(row + (0,), (0,) + row)
-    final_row = list(map(sum,zipped_row))
+    final_row = tuple(map(sum,zipped_row))
     return final_row
     
     
@@ -26,6 +26,7 @@ pascals_triangle = [
 for n in range(5):
     m_length = len(pascals_triangle)
     temp = add_layer(pascals_triangle[-1])
+    print(pascals_triangle)
     pascals_triangle.append(temp)
-    print(n)
+    
 
