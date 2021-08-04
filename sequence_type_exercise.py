@@ -6,14 +6,13 @@
 #
 # Hint: What does the expression `zip(row + (0,), (0,) + row)` produce?
 
-def add_layer(triangle):
+def add_layer(row):
     # Add a layer to Pascal's triangle.
     # Each layer should be a tuple.
-    row = triangle[-1]
+    print(type(row))
     zipped_row = zip(row + (0,), (0,) + row)
     final_row = list(map(sum,zipped_row))
-    print(final_row)
-    pass
+    return final_row
     
     
 pascals_triangle = [
@@ -25,14 +24,8 @@ pascals_triangle = [
 
 # Add a few layers, just to check.
 for n in range(5):
-    add_layer(pascals_triangle)
+    m_length = len(pascals_triangle)
+    temp = add_layer(pascals_triangle[-1])
+    pascals_triangle.append(temp)
+    print(n)
 
-row = (1, 3, 3, 1)
-
-#zipped = zip(row + (0,), (0,) + row)
-#print(list(zipped))
-
-# print(row + (0,))
-# print((0,) + row)
-
-# print()
