@@ -1,32 +1,26 @@
-# Manipulating Lists and Tuples
-# Write a function to produce the next layer of Pascal's triangle
-# Each layer is one larger than the previous layer, and each element in
-# the new layer is the sum of the two elements above it in the previous
-# layer. For example, `(1, 3, 3, 1) -> (1, 4, 6, 4, 1)`.
-#
-# Hint: What does the expression `zip(row + (0,), (0,) + row)` produce?
-
-def add_layer(row):
-    # Add a layer to Pascal's triangle.
-    # Each layer should be a tuple.
-    print(type(row))
-    zipped_row = zip(row + (0,), (0,) + row)
-    final_row = tuple(map(sum,zipped_row))
-    return final_row
-    
-    
-pascals_triangle = [
-    (1,),
-    (1, 1),
-    (1, 2, 1),
-    (1, 3, 3, 1),
-]
-
-# Add a few layers, just to check.
-for n in range(5):
-    m_length = len(pascals_triangle)
-    temp = add_layer(pascals_triangle[-1])
-    print(pascals_triangle)
-    pascals_triangle.append(temp)
-    
-
+d = {"one": 1, "two": 2, "three": 3}
+print(d["two"])
+#2
+d["three"] = 5
+## d = {"one": 1, "two": 2, "three": 5}
+del d["one"]
+print(len(d))
+#2
+d["four"] = 11
+## d = {"one": 1, "two": 2, "three": 5,"four":8}
+# print(d.get("three", "four"))
+print(d)
+#5
+# print(d.get("three", d["four"]))
+#5
+# print(max(d.values()))
+# #8
+# print(min(d))
+# #four
+# print(d.pop("four", 4))
+# #8
+# print(d.pop("one", d["two"]))
+# #
+# print(d.pop("two"))
+# for key, value in d.items():
+#     print(key * value)
