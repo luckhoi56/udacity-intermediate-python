@@ -1,10 +1,12 @@
-"""Check whether a word is 'efficient' - if each letter can be drawn by a pencil without lifting."""
-EFFICIENT_LETTERS = set('BCDGIJLMNOPSUVWZ')
+"""Swap the keys and values in a mapping."""
 
-def is_efficient(letters):
-    if(letters - EFFICIENT_LETTERS == set()):
-        return True
-    return False
+def swap_keys_and_values(d):
+    for key,value in d.items():
+        print(key,value)
+        key,value=value,key
+        print(key,value)
+    return d
 
-print(is_efficient(set("BCD")))
-print(set("BCDK")-EFFICIENT_LETTERS)
+a={"a":"leaf","b":"mouse"}
+a = swap_keys_and_values(a)
+print(a)
