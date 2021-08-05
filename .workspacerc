@@ -1,0 +1,25 @@
+# Set PS1 and initialize pyenv.
+# STUDENTS: DON'T CHANGE THIS FILE.
+
+export PS1="\[\e]0;student@udacity: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]student@udacity\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$ "
+
+# Workaround for an error in how os.path.abspath handles highly nested links.
+#
+# On startup, unless the `-S` option or equivalent is given, Python runs the equivalent of `import site; site.main()`
+#
+# - /home/workspace/.pyenv/versions/pynd-c1/bin/../../../lib/python39.zip
+# - /home/workspace/.pyenv/versions/pynd-c1/bin/../../../lib/python3.9
+# - /home/workspace/.pyenv/versions/pynd-c1/bin/../../../lib/python3.9/lib-dynload
+#
+# The solution, for now, is to explicitly give Python file paths that don't include any parent references, so that
+# the standard normalization process results in file paths - which might still contain symlinks - but that are valid
+# directories in which to resolve Python module imports.
+
+PYTHONPATH="/home/workspace/.pyenv/versions/3.9.0/lib/python39.zip:/home/workspace/.pyenv/versions/3.9.0/lib/python3.9:/home/workspace/.pyenv/versions/3.9.0/lib/python3.9/lib-dynload:${PYTHONPATH}"
+
+# Set up pyenv and pyenv-virtualenv
+export PYENV_ROOT="/data/pynd_c1/"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then eval "$(pyenv init - --no-rehash)"; eval "$(pyenv virtualenv-init - --no-rehash)"; fi
+
+pyenv shell pynd-c1
