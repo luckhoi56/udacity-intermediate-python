@@ -1,8 +1,18 @@
 import helper
 import gold
-
-def parse_content(content):
+def m_function(m_content):
+    temp = list(m_content)
+    print(m_content)
     return {}
+def parse_content(content):
+    m_content = content.split('\n')
+    
+    for i in m_content:
+        temp = i.split(' ')
+        new_temp =[value for value in temp if value != '']
+        print(new_temp)
+
+    # return {}
 
 def make_tree(words):
     return {}
@@ -11,14 +21,14 @@ def predict(tree, numbers):
     return {}
 
 
-if __name__ == '__main__':
+if __name__ == '__main__': 
     content = helper.read_content(filename='ngrams-10k.txt')
-
+    parse_content(content)
     # When you've finished implementing a part, remove the `gold.` prefix to check your own code.
 
     # PART 1: Parsing a string into a dictionary.
     #words = gold.parse_content(content)
-    print(words)
+   
     # PART 2: Building a trie from a collection of words.
     # tree = gold.make_tree(words)
 
