@@ -20,10 +20,30 @@ def parse_content(content):
     m_dict = dict(m_list)
     # print(m_dict)
     return m_dict
+    
+def make_trie(word,value):
+    m_dict = dict()
+    m_first_node = m_dict
+    count = 0
+    for char in word:
+        if(count == len(word) -1):
+            m_dict[char] = {'$'+word:value}
+        else:
+            m_dict[char] ={}
+            m_dict = m_dict[char]
+            count = count + 1
+
+    return m_first_node
+    
+
 
 def make_tree(words):
+    m_dict = {}
     for key,value in words.items():
-        print(key,value)
+        m_words = []
+        for i in range(0,len(key)):
+            if(check_word_in_dict(m_words)
+        
     return {}
 
 def predict(tree, numbers):
