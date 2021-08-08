@@ -8,7 +8,7 @@ def check_word_in_dict(word,words):
 
 def m_function(m_content):
     temp = list(m_content)
-    print(m_content)
+    
     return {}
 def parse_content(content):
     m_content = content.split('\n')
@@ -58,8 +58,9 @@ if __name__ == '__main__':
     words = parse_content(content)
     
     # PART 2: Building a trie from a collection of words.
-    # tree = gold.make_tree(words)
-    print(make_tree(words))
+    tree = gold.make_tree(words)
+    # tree = make_tree(words)
+    print(tree)
     # while True:
     #     # PART 3: Predict words that could follow
     #     numbers = helper.ask_for_numbers()
