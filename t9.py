@@ -6,13 +6,14 @@ def m_function(m_content):
     return {}
 def parse_content(content):
     m_content = content.split('\n')
-    
+    m_list = []
     for i in m_content:
         temp = i.split(' ')
         new_temp =[value for value in temp if value != '']
-        print(new_temp)
-
-    # return {}
+        m_list.append(new_temp)
+    m_dict = dict(m_list)
+    
+    return m_dict
 
 def make_tree(words):
     return {}
