@@ -1,5 +1,11 @@
 import helper
 import gold
+def check_word_in_dict(word,words):
+    if(words.get(word,0) == 0):
+        return False
+    else:
+        return True
+
 def m_function(m_content):
     temp = list(m_content)
     print(m_content)
@@ -12,10 +18,12 @@ def parse_content(content):
         new_temp =[value for value in temp if value != '']
         m_list.append(new_temp)
     m_dict = dict(m_list)
-    
+    # print(m_dict)
     return m_dict
 
 def make_tree(words):
+    for key,value in words.items():
+        print(key,value)
     return {}
 
 def predict(tree, numbers):
@@ -28,11 +36,11 @@ if __name__ == '__main__':
     # When you've finished implementing a part, remove the `gold.` prefix to check your own code.
 
     # PART 1: Parsing a string into a dictionary.
-    #words = gold.parse_content(content)
+    words = parse_content(content)
    
     # PART 2: Building a trie from a collection of words.
     # tree = gold.make_tree(words)
-
+    make_tree('locally',words)
     # while True:
     #     # PART 3: Predict words that could follow
     #     numbers = helper.ask_for_numbers()
