@@ -58,8 +58,8 @@ if __name__ == '__main__':
     words = parse_content(content)
     
     # PART 2: Building a trie from a collection of words.
-    tree = gold.make_tree(words)
-    # tree = make_tree(words)
+    # tree = gold.make_tree(words)
+    tree = make_tree(words)
     print(tree)
     # while True:
     #     # PART 3: Predict words that could follow
