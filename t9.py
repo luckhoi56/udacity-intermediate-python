@@ -85,16 +85,16 @@ def pre_process_tree(word,value,m_dict):
             count = count + 1
     return m_dict
 def predict(tree, numbers):
-    print(numbers)
+    
     count = 0
     m_keys = []
     for number in numbers:
         tree = tree[number] #keep traversing until the last one
         if(count == len(numbers) -1):
-            keys = tree.keys()
-            for key in keys:
+            items = tree.items()
+            for key,value in items:
                 if(key[0] =='$'):
-                    m_keys.append(key)
+                    m_keys.append({key:value})
         count = count + 1
     return m_keys
 if __name__ == '__main__': 
@@ -110,19 +110,22 @@ if __name__ == '__main__':
     tree = make_tree(words)
     m_pre_process_tree = make_pre_process_tree(words)
     # print(m_pre_process_tree)
-    print(predict(m_pre_process_tree,'234'))
-    # while True:
-    #     # PART 3: Predict words that could follow
-    #     numbers = helper.ask_for_numbers()
-    #     predictions = gold.predict(tree, numbers)
+    
+    while True:
+        # PART 3: Predict words that could follow
+        numbers = helper.ask_for_numbers()
+        # predictions = gold.predict(tree, numbers)
+        # print(type(numbers))
+        predictions = predict(m_pre_process_tree, numbers)
+        # print(predictions)
+        if not predictions:
+            print('No words were found that match those numbers. :(')
+        else:
+            for prediction in predictions[:10]:
+                for key,value in prediction.items():
+                    print(key,value)
 
-    #     if not predictions:
-    #         print('No words were found that match those numbers. :(')
-    #     else:
-    #         for prediction, frequency in predictions[:10]:
-    #             print(prediction, frequency)
-
-    #     response = input('Want to go again? [y/N] ')
-    #     again = response and response[0] in ('y', 'Y')
-    #     if not again:
-    #         break
+        response = input('Want to go again? [y/N] ')
+        again = response and response[0] in ('y', 'Y')
+        if not again:
+            break
