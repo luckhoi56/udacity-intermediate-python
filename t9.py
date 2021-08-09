@@ -84,10 +84,10 @@ def pre_process_tree(word,value,m_dict):
             m_dict = m_dict[char]
             count = count + 1
     return m_dict
-def predict(tree, numbers):
+def predict(tree, numbers,m_keys):
     
     count = 0
-    m_keys = []
+    print(numbers)
     for number in numbers:
         tree = tree[number] #keep traversing until the last one
         if(count == len(numbers) -1):
@@ -95,6 +95,14 @@ def predict(tree, numbers):
             for key,value in items:
                 if(key[0] =='$'):
                     m_keys.append({key:value})
+                else:
+                    predict(tree,key,m_keys)
+                    # if(tree.keys()):
+                    #     for key_2,value_2 in tree.items():
+                    #         if(key_2[0] =='$'):
+                    #             m_keys.append({key_2:value_2})
+                    #         else:
+                    #             predict(tree,numbers+key_2,m_keys)
         count = count + 1
     return m_keys
 if __name__ == '__main__': 
@@ -110,13 +118,13 @@ if __name__ == '__main__':
     tree = make_tree(words)
     m_pre_process_tree = make_pre_process_tree(words)
     # print(m_pre_process_tree)
-    
+    m_keys = []
     while True:
         # PART 3: Predict words that could follow
         numbers = helper.ask_for_numbers()
         # predictions = gold.predict(tree, numbers)
         # print(type(numbers))
-        predictions = predict(m_pre_process_tree, numbers)
+        predictions = predict(m_pre_process_tree, numbers,m_keys)
         # print(predictions)
         if not predictions:
             print('No words were found that match those numbers. :(')
