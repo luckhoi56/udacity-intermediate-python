@@ -89,7 +89,10 @@ def predict(tree, numbers,m_keys):
     count = 0
     print(numbers)
     for number in numbers:
-        tree = tree[number] #keep traversing until the last one
+        if(tree.get(number)):
+            tree = tree[number] #keep traversing until the last one
+        else:
+            return
         if(count == len(numbers) -1):
             items = tree.items()
             for key,value in items:
@@ -118,15 +121,16 @@ if __name__ == '__main__':
     tree = make_tree(words)
     m_pre_process_tree = make_pre_process_tree(words)
     # print(m_pre_process_tree)
-    m_keys = []
+    
     while True:
         # PART 3: Predict words that could follow
+        m_keys = []
         numbers = helper.ask_for_numbers()
         # predictions = gold.predict(tree, numbers)
         # print(type(numbers))
         predictions = predict(m_pre_process_tree, numbers,m_keys)
         # print(predictions)
-        if not predictions:
+        if (m_keys ==[]):
             print('No words were found that match those numbers. :(')
         else:
             for prediction in predictions[:10]:
