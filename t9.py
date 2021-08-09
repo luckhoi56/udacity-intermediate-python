@@ -110,7 +110,7 @@ if __name__ == '__main__':
     tree = make_tree(words)
     m_pre_process_tree = make_pre_process_tree(words)
     # print(m_pre_process_tree)
-    print(predict(m_pre_process_tree,'583'))
+    print(predict(m_pre_process_tree,'234'))
     # while True:
     #     # PART 3: Predict words that could follow
     #     numbers = helper.ask_for_numbers()
