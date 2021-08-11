@@ -1,7 +1,5 @@
-def merge_dict(dict_a,dict_b):
-    return {**dict_a,**dict_b}
+nine_is_a_square_with_map = 9 in map(lambda x: x ** 2, range(1000000))
+print(nine_is_a_square_with_map)
 
-dict_1 = {"bitch":"a"}
-dict_2 = {"fuck" :"b"}
-
-print(merge_dict(dict_1,dict_2))
+a = [1,2,3,4]
+print(1 in a)
