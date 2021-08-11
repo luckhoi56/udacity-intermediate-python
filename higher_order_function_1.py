@@ -7,10 +7,13 @@
 # (d) ["apple", "orange", "pear"] => ("ap", "or", "pe")  (first two letters)
 
 m_array = ["apple", "orange", "pear"]
-
+def upper(word):
+    
+    return word.upper()
 a = map(len, m_array)
-# b = map(???, ???)
+b = map(upper, m_array)
 # c = map(???, ???)
 # d = map(???, ???)
 
 print(tuple(a))
+print(tuple(b))
