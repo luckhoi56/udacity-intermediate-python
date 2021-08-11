@@ -6,7 +6,7 @@
 # (c) ["apple", "orange", "pear"] => ("elppa", "egnaro", "raep")  (reversed)
 # (d) ["apple", "orange", "pear"] => ("ap", "or", "pe")  (first two letters)
 
-
+m_array = ["apple", "orange", "pear"]
 
 a = map(???, ???)
 b = map(???, ???)
