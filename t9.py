@@ -87,7 +87,7 @@ def pre_process_tree(word,value,m_dict):
 def predict(tree, numbers,m_keys):
     
     count = 0
-    print(numbers)
+    
     for number in numbers:
         if(tree.get(number)):
             tree = tree[number] #keep traversing until the last one
@@ -100,14 +100,25 @@ def predict(tree, numbers,m_keys):
                     m_keys.append({key:value})
                 else:
                     predict(tree,key,m_keys)
-                    # if(tree.keys()):
-                    #     for key_2,value_2 in tree.items():
-                    #         if(key_2[0] =='$'):
-                    #             m_keys.append({key_2:value_2})
-                    #         else:
-                    #             predict(tree,numbers+key_2,m_keys)
         count = count + 1
     return m_keys
+def m_custom_sort(m_list):
+    
+    temp = []
+    m_values = []
+    for m_temp in m_list:
+        
+        for value in m_temp.values():
+            m_values.append(int(value))
+    m_values.sort(reverse = True)
+    
+    for m_value in m_values:
+        for m_temp in m_list:
+            for key,value in m_temp.items():
+                if(int(value) == m_value):
+                    temp.append({key:value})
+    return temp
+
 if __name__ == '__main__': 
     content = helper.read_content(filename='ngrams-10k.txt')
     parse_content(content)
@@ -126,13 +137,13 @@ if __name__ == '__main__':
         # PART 3: Predict words that could follow
         m_keys = []
         numbers = helper.ask_for_numbers()
-        # predictions = gold.predict(tree, numbers)
-        # print(type(numbers))
+      
         predictions = predict(m_pre_process_tree, numbers,m_keys)
-        # print(predictions)
+        
         if (m_keys ==[]):
             print('No words were found that match those numbers. :(')
         else:
+            predictions = m_custom_sort(predictions)
             for prediction in predictions[:10]:
                 for key,value in prediction.items():
                     print(key,value)
