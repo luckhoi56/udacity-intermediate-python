@@ -8,12 +8,17 @@
 
 m_array = ["apple", "orange", "pear"]
 def upper(word):
-    
     return word.upper()
+def reverse(word):
+    return word[::-1]
+def first_two(word):
+    return word[0:2:1]
 a = map(len, m_array)
 b = map(upper, m_array)
-# c = map(???, ???)
-# d = map(???, ???)
+c = map(reverse, m_array)
+d = map(first_two, m_array)
 
 print(tuple(a))
 print(tuple(b))
+print(tuple(c))
+print(tuple(d))
